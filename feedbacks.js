@@ -1,31 +1,40 @@
 const { combineRgb } = require('@companion-module/base')
+const feedbacksSettings = require('./constants').feedbacksSettings
 
-module.exports = async function (self) {
-	self.setFeedbackDefinitions({
-		ChannelState: {
-			name: 'Example Feedback',
-			type: 'boolean',
-			label: 'Channel State',
+module.exports = async (instance) => {
+	instance.setFeedbackDefinitions({
+		functionState: {
+			name: 'State of function',
+			type: 'advanced',
+			label: 'Function State',
 			defaultStyle: {
 				bgcolor: combineRgb(255, 0, 0),
-				color: combineRgb(0, 0, 0),
+				color: combineRgb(255, 255, 255),
 			},
 			options: [
 				{
-					id: 'num',
-					type: 'number',
-					label: 'Test',
-					default: 5,
-					min: 0,
-					max: 10,
+					type: 'dropdown',
+					label: 'Function',
+					id: 'functionID',
+					default: 0,
+					choices: instance.qlcplusObj.functions,
 				},
 			],
 			callback: (feedback) => {
-				console.log('Hello world!', feedback.options.num)
-				if (feedback.options.num > 5) {
-					return true
-				} else {
-					return false
+				if(!instance.qlcplusObj.functions) return false
+				const targetFunction = instance.qlcplusObj.functions.find((f) => f.id === feedback.options.functionID)
+				if (targetFunction) {
+					if (targetFunction.status === 'Running') {
+						return {
+							png64: feedbacksSettings.images.play,
+							pngalignment: 'center:bottom',
+						}
+					} else if (targetFunction.status === 'Stopped') {
+						return {
+							png64: feedbacksSettings.images.stop,
+							pngalignment: 'center:bottom',
+						}
+					}
 				}
 			},
 		},

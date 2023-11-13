@@ -1,5 +1,5 @@
 {
-	"name": "your-module-name",
+	"name": "massimo-callegari-qlcplus",
 	"version": "0.1.0",
 	"main": "main.js",
 	"scripts": {
@@ -8,10 +8,11 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/bitfocus/companion-module-your-module-name.git"
+		"url": "git+https://github.com/bitfocus/companion-module-massimo-callegari-qlcplus.git"
 	},
 	"dependencies": {
-		"@companion-module/base": "~1.5.1"
+		"@companion-module/base": "~1.5.1",
+		"promisifiedwebsocket": "^1.0.0"
 	},
 	"devDependencies": {
 		"@companion-module/tools": "^1.4.1"

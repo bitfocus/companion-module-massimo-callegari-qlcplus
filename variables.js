@@ -1,7 +1,12 @@
-module.exports = async function (self) {
-	self.setVariableDefinitions([
-		{ variableId: 'variable1', name: 'My first variable' },
-		{ variableId: 'variable2', name: 'My second variable' },
-		{ variableId: 'variable3', name: 'Another variable' },
-	])
+module.exports = async (instance) => {
+	let functionsArray = []
+	instance.qlcplusObj.functions.forEach((f) => {
+		functionsArray.push({ variableId: `Function${f.id}`, name: f.label })
+	})
+	instance.setVariableDefinitions(functionsArray)
+	instance.qlcplusObj.functions.forEach((f) => {
+		instance.setVariableValues({
+			[`Function${f.id}`]: f.status ? f.status : 'Unknown',
+		})
+	})
 }
