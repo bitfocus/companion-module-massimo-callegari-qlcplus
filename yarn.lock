@@ -1707,10 +1707,10 @@ prettier@^2.8.8:
   resolved "https://registry.npmjs.org/prettier/-/prettier-2.8.8.tgz"
   integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
 
-promisifiedwebsocket@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/promisifiedwebsocket/-/promisifiedwebsocket-1.0.0.tgz#919010e4ac6e298921e2719bf90f9ed08310c4ee"
-  integrity sha512-1IWmQkbYbcmDPuVhFIpagkcUe2F4tKjCdE0fRFQ51ynGpc3rN1r8RiMt/WQ1nM/sGa6EalY+5YpAmk4GTczkdQ==
+promisifiedwebsocket@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/promisifiedwebsocket/-/promisifiedwebsocket-1.1.0.tgz#340cb375cd2af84f3a27ea55a3f49a76b29e87ad"
+  integrity sha512-WBXA00yWWDzUTPFkJniuTnS5z+ZPtOndPBFxwbEJSSoDCDWBezENW51q9At/4gHJFXUJ3Q9lbHEcXjZKIbX1NA==
   dependencies:
     ws "^8.14.2"
 
