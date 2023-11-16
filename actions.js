@@ -7,30 +7,30 @@ module.exports = (instance) => {
 				this.log('debug', instance.sendCommand(`QLC+API|getFunctionsList`))
 			},
 		},
-		getFunctionStatus: {
-			name: 'Get Function Status based on a ID',
-			options: [
-				{
-					type: 'dropdown',
-					label: 'Function',
-					id: 'functionID',
-					default: 0,
-					choices: instance.qlcplusObj.functions,
-				},
-			],
-			callback: async (event) => {
-				//Find the matching function:
-				const targetFunction = instance.qlcplusObj.functions.find((f) => f.id === event.options.functionID)
-				if (targetFunction) {
-					targetFunction.status = instance.convertDataToJavascriptObject(
-						await instance.sendCommand(`QLC+API|getFunctionStatus|${event.options.functionID}`)
-					)[0].id
-					instance.setVariableValues({ ['Function'+targetFunction.id]: targetFunction.status })
-					instance.checkFeedbacks('functionState')
-				}
-				instance.log('debug', `Function ${event.options.functionID} is ${targetFunction.status}`)
-			},
-		},
+		// getFunctionStatus: {
+		// 	name: 'Get Function Status based on a ID',
+		// 	options: [
+		// 		{
+		// 			type: 'dropdown',
+		// 			label: 'Function',
+		// 			id: 'functionID',
+		// 			default: 0,
+		// 			choices: instance.qlcplusObj.functions,
+		// 		},
+		// 	],
+		// 	callback: async (event) => {
+		// 		//Find the matching function:
+		// 		const targetFunction = instance.qlcplusObj.functions.find((f) => f.id === event.options.functionID)
+		// 		if (targetFunction) {
+		// 			targetFunction.status = instance.convertDataToJavascriptObject(
+		// 				await instance.sendCommand(`QLC+API|getFunctionStatus|${event.options.functionID}`)
+		// 			)[0].id
+		// 			instance.setVariableValues({ ['Function'+targetFunction.id]: targetFunction.status })
+		// 			instance.checkFeedbacks('functionState')
+		// 		}
+		// 		instance.log('debug', `Function ${event.options.functionID} is ${targetFunction.status}`)
+		// 	},
+		// },
 		setFunctionStatus: {
 			name: 'Set Function Status',
 			options: [
