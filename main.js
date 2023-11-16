@@ -76,6 +76,7 @@ class ModuleInstance extends InstanceBase {
 		this.updateActions() // export actions
 		this.updateFeedbacks() // export feedbacks
 		this.updateVariableDefinitions() // export variable definitions
+		this.checkFeedbacks('function_state') // check feedbacks
 	}
 
 	convertDataToJavascriptObject(data) {
@@ -107,6 +108,24 @@ class ModuleInstance extends InstanceBase {
 		})
 		this.ws.on('websocketClose', () => {
 			this.updateStatus(InstanceStatus.Disconnected)
+		})
+		this.ws.on('update', (message) => {
+			// for now we use this to catch the subscription of the function updates
+			let messageArray = message.toString().split('|')
+			switch (messageArray[0]) {
+				case 'FUNCTION':
+					const targetFunction = this.qlcplusObj.functions.find((f) => f.id === messageArray[1])
+					if (targetFunction) {
+						targetFunction.status = messageArray[2]
+						this.setVariableValues({ ['Function' + targetFunction.id]: targetFunction.status })
+						this.checkFeedbacks('functionState')
+					}
+					break
+
+				default:
+					this.log('debug', 'no match for: ' + messageArray[0])
+					break
+			}
 		})
 	}
 }
