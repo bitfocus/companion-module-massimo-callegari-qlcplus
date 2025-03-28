@@ -124,7 +124,7 @@ class ModuleInstance extends InstanceBase {
 
 		const connect = () => {
 			if (this.isDestroyed) return
-			
+
 			if (this.ws) {
 				try {
 					this.ws.close()

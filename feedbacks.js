@@ -21,7 +21,7 @@ module.exports = async (instance) => {
 				},
 			],
 			callback: (feedback) => {
-				if(!instance.qlcplusObj.functions) return false
+				if (!instance.qlcplusObj.functions) return false
 				const targetFunction = instance.qlcplusObj.functions.find((f) => f.id === feedback.options.functionID)
 				if (targetFunction) {
 					if (targetFunction.status === 'Running') {
