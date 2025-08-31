@@ -21,6 +21,6 @@
 	},
 	"legacyIds": [],
 	"manufacturer": "massimo-callegari",
-	"products": ["qlcplus"],
+	"products": ["qlcplus", "qlc+"],
 	"keywords": ["light", "console"]
 }
