@@ -3,7 +3,7 @@
 	"name": "qlcplus",
 	"shortname": "qlcplus",
 	"description": "Connect to QLC+ software",
-	"version": "0.1.0",
+	"version": "0.0.0",
 	"license": "MIT",
 	"repository": "git+https://github.com/bitfocus/companion-module-massimo-callegari-qlcplus.git",
 	"bugs": "https://github.com/bitfocus/companion-module-massimo-callegari-qlcplus/issues",
@@ -21,6 +21,6 @@
 	},
 	"legacyIds": [],
 	"manufacturer": "massimo-callegari",
-	"products": ["qlcplus"],
+	"products": ["qlcplus", "qlc+"],
 	"keywords": ["light", "console"]
 }
