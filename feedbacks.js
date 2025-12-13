@@ -5,7 +5,7 @@ module.exports = async (instance) => {
 	instance.setFeedbackDefinitions({
 		functionState: {
 			name: 'State of function',
-			type: 'advanced',
+			type: 'boolean',
 			label: 'Function State',
 			defaultStyle: {
 				bgcolor: combineRgb(255, 0, 0),
