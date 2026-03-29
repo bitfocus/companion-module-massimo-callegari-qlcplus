@@ -50,6 +50,7 @@ module.exports = (instance) => {
 					id: 'widgetID',
 					default: 0,
 					choices: instance.qlcplusObj.widgets,
+					disableAutoExpression: true,
 				},
 				{
 					type: 'number',
@@ -60,6 +61,7 @@ module.exports = (instance) => {
 					max: 255,
 				},
 			],
+			optionsSupportExpressions: true,
 			callback: (event) => {
 				instance.sendCommand(`${event.options.widgetID}|${event.options.value}`)
 			},
@@ -75,6 +77,7 @@ module.exports = (instance) => {
 					default: 0,
 					choices: instance.qlcplusObj.widgets,
 					tooltip: 'Select a Slider widget from Virtual Console',
+					disableAutoExpression: true,
 				},
 				{
 					type: 'number',
@@ -85,6 +88,7 @@ module.exports = (instance) => {
 					max: 255,
 				},
 			],
+			optionsSupportExpressions: true,
 			callback: (event) => {
 				instance.sendCommand(`${event.options.widgetID}|${event.options.value}`)
 			},
@@ -150,6 +154,7 @@ module.exports = (instance) => {
 					default: 0,
 					choices: instance.qlcplusObj.widgets,
 					tooltip: 'Select a Cue List widget',
+					disableAutoExpression: true,
 				},
 				{
 					type: 'number',
@@ -159,6 +164,7 @@ module.exports = (instance) => {
 					min: 0,
 				},
 			],
+			optionsSupportExpressions: true,
 			callback: (event) => {
 				instance.sendCommand(`${event.options.widgetID}|${event.options.step}`)
 			},
@@ -174,6 +180,7 @@ module.exports = (instance) => {
 					default: 0,
 					choices: instance.qlcplusObj.widgets,
 					tooltip: 'Select a Frame widget with multiple pages',
+					disableAutoExpression: true,
 				},
 				{
 					type: 'number',
@@ -183,6 +190,7 @@ module.exports = (instance) => {
 					min: 0,
 				},
 			],
+			optionsSupportExpressions: true,
 			callback: (event) => {
 				instance.sendCommand(`${event.options.widgetID}|${event.options.page}`)
 			},
@@ -198,6 +206,7 @@ module.exports = (instance) => {
 					default: 0,
 					choices: instance.qlcplusObj.widgets,
 					tooltip: 'Select an XY Pad widget',
+					disableAutoExpression: true,
 				},
 				{
 					type: 'number',
@@ -216,6 +225,7 @@ module.exports = (instance) => {
 					max: 255,
 				},
 			],
+			optionsSupportExpressions: true,
 			callback: (event) => {
 				// XY Pad requires two commands
 				instance.sendCommand(`${event.options.widgetID}|${event.options.xPos}|${event.options.yPos}`)
