@@ -64,6 +64,32 @@ module.exports = (instance) => {
 				instance.sendCommand(`${event.options.widgetID}|${event.options.value}`)
 			},
 		},
+		varWidgetValueSet: {
+			name: 'Set Widget Value from variable',
+			options: [
+				{
+					type: 'dropdown',
+					label: 'Widget',
+					id: 'widgetID',
+					default: 0,
+					choices: instance.qlcplusObj.widgets,
+				},
+				{
+					type: 'textinput',
+					label: 'Value',
+					id: 'value',
+					default: 255,
+					min: 0,
+					max: 255,
+					useVariables: true,
+					useExpressions: true,
+				},
+			],
+			callback: (event) => {
+				//TODO Validate Value
+				instance.sendCommand(`${event.options.widgetID}|${event.options.value}`)
+			},
+		},
 		// Virtual Console Slider Control
 		setSliderValue: {
 			name: 'Set Virtual Console Slider Value',
