@@ -38,5 +38,38 @@ module.exports = async (instance) => {
 				}
 			},
 		},
+		widgetState: {
+			name: "Widget State",
+			type: "boolean",
+			defaultStyle: {
+				bgcolor: 0xFF7B37,
+				color: 0x000000,
+			},
+			options: [{
+				type: 'dropdown',
+				label: 'Widget',
+				id: 'widgetID',
+				default: 0,
+				choices: instance.qlcplusObj.widgets,
+			},
+			{
+				type: 'number',
+				label: "Threshold",
+				id: "treshold",
+				default: 1,
+				min: 0,
+				max: 255,
+				range: true
+			}],
+			callback: (feedback) => {
+   				if (!instance.qlcplusObj.widgets) return false;
+				const target = instance.qlcplusObj.widgets.find((f) => f.id === feedback.options.widgetID)
+				if (!target) return false;
+
+				if (target.value > feedback.options.treshold) {
+					return true;
+				} else return false;
+  			},
+		}
 	})
 }

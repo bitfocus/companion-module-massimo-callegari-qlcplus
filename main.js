@@ -163,6 +163,23 @@ class ModuleInstance extends InstanceBase {
 			this.ws.on('update', (message) => {
 				// for now we use this to catch the subscription of the function updates
 				let messageArray = message.toString().split('|')
+			if (["BUTTON","SLIDER"].includes(messageArray[1])){
+
+					const target = this.qlcplusObj.widgets.find((w) => w.id === messageArray[0]);
+					if (!target) return; //Return when we dont know the Widget
+					target.value = messageArray[2];
+					if (target.type !== messageArray[1])
+						target.type = messageArray[1];
+					target.value = messageArray[2];
+
+					//this.checkFeedbacks('widgetState');
+					this.setVariableValues({ ['Widget' + target.id]: target.value })
+					this.checkFeedbacks('widgetState')
+
+					this.log(`debug`, `VC Widget` + messageArray[0] + ` Recived Value ` + messageArray[2])
+					return
+				}
+				//The update if not for a Widget
 				switch (messageArray[0]) {
 					case 'FUNCTION':
 						const targetFunction = this.qlcplusObj.functions.find((f) => f.id === messageArray[1])
